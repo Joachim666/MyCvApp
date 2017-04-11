@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyCvApp</string>
+    <string name="settings" />
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contact">Contact</string>
+    <string name="experience">Experience</string>
+    <string name="_609_320_082">609 320 082</string>
+    <string name="joachimotto_wp_pl">joachimotto@wp.pl</string>
+</resources>
