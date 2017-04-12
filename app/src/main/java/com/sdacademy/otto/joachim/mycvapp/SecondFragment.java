@@ -12,16 +12,16 @@ import android.widget.TextView;
 
 public class SecondFragment extends Fragment {
 
-    SecondFragment(){
+   public SecondFragment(){
 
     }
 
 
 
-    public static FirstFragment newInstance() {
-        FirstFragment fragmentFirst = new FirstFragment();
+    public static SecondFragment newInstance() {
+      SecondFragment secondFragment = new SecondFragment();
 
-        return fragmentFirst;
+        return secondFragment;
     }
 
 
@@ -31,7 +31,7 @@ public class SecondFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_thrid, container, false);
+        View view = inflater.inflate(R.layout.fragment_second, container, false);
 
 
         return view;

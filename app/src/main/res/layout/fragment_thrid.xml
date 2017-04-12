@@ -7,23 +7,46 @@
     android:orientation="vertical"
     tools:context="com.sdacademy.otto.joachim.mycvapp.ThirdFragment">
 
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center_horizontal"
+   >
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_create_black_24dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:text="@string/contact"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/certyfication2"
         android:textColor="@color/primary_dark"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:id="@+id/textView3"
+
+        />
+</LinearLayout>
+
 
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="30dp">
 
 
         <ImageView
@@ -31,15 +54,15 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="7"
-            android:src="@drawable/ic_settings_phone_black_24dp"/>
+            android:src="@drawable/ic_check_black_24dp"/>
 
         <TextView
-            android:textColor="@android:color/holo_red_light"
+            android:textColor="@color/primary"
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="3"
-            android:text="@string/_609_320_082"
+            android:text="@string/first_certificate_in_english"
             android:gravity="center"
             android:textSize="20sp"
             android:textStyle="italic"/>
@@ -56,15 +79,15 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="7"
-            android:src="@drawable/ic_drafts_black_24dp"/>
+            android:src="@drawable/ic_check_black_24dp"/>
 
         <TextView
-            android:textColor="@android:color/holo_red_light"
+            android:textColor="@color/primary"
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="3"
-            android:text="@string/joachimotto_wp_pl"
+            android:text="Java and Android for beginners by SDA"
             android:gravity="center"
             android:textSize="20sp"
             android:textStyle="italic"/>

@@ -1,13 +1,19 @@
 package com.sdacademy.otto.joachim.mycvapp;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -18,7 +24,6 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
 
-
     @BindView(R.id.vpPager)
     ViewPager vpPager;
 
@@ -26,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.tablayout)
     TabLayout tabLayout;
-
+    @BindView(R.id.drawerLayout)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.navigationView)
+    NavigationView navigationView;
 
 
     @Override
@@ -42,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(R.menu.menu,menu);
+        this.getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menu_settings:
                 openSettings();
                 break;
@@ -62,10 +70,31 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupToolbar() {
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Joachim Otto");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.Open_drawer, R.string.Close_drawer);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                                                             @Override
+                                                             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                                                                 for (int i = 0; i < navigationView.getMenu().size(); i++)
+
+                                                                     navigationView.getMenu().getItem(i).setChecked(false);
+
+
+                                                                 item.setChecked(true);
+                                                                 toolbar.setTitle(item.getTitle());
+                                                                 drawerLayout.closeDrawer(GravityCompat.START);
+
+                                                                 return false;
+                                                             }
+                                                         }
+
+        );
     }
+
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
         private static int NUM_ITEMS = 3;
@@ -99,7 +128,19 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position) {
 
-            return "Page " + position;
+            switch (position) {
+                case 0:
+                    return "Education";
+                case 1:
+                    return "Work Experience";
+                case 2:
+                    return "Certyfication";
+                default:
+                    return null;
+
+            }
+
+
         }
 
     }

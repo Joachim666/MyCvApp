@@ -17,16 +17,16 @@ public class ThirdFragment extends Fragment {
 
 
 
-    public static FirstFragment newInstance() {
-        FirstFragment fragmentFirst = new FirstFragment();
-        return fragmentFirst;
+    public static ThirdFragment newInstance() {
+        ThirdFragment thirdFragment = new ThirdFragment();
+        return thirdFragment;
     }
 
 
 
 
 
-    // Inflate the view for the fragment based on layout XML
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
