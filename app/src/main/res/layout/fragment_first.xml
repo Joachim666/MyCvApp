@@ -7,6 +7,7 @@
     tools:context="com.sdacademy.otto.joachim.mycvapp.ThirdFragment"
     android:orientation="horizontal"
     android:gravity="center_horizontal"
+    android:padding="8dp"
 
     >
     <ImageView
@@ -16,22 +17,18 @@
         android:scaleX="2"
         android:scaleY="2"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
-
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+
         android:text="@string/education2"
         android:textColor="@color/primary_dark"
         android:textSize="20sp"
         android:textStyle="bold"
         android:id="@+id/textView3"
-
         />
-
 
 
 </LinearLayout>

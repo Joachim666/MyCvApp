@@ -1,5 +1,7 @@
 package com.sdacademy.otto.joachim.mycvapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -17,6 +19,8 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+
+import com.j256.ormlite.stmt.query.In;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.navigationView)
     NavigationView navigationView;
 
+    private final String PHONE_NUMBER = "609320082";
+
+
+    private static final String TAG_EMAIL = "joachimotto@wp.pl";
+    private static final String TAG_SUBJECT = "Wiadomość z aplikacji CV";
+    private static final String TAG_MAIL_TO = "mailto:";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         setupToolbar();
         vpPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(vpPager);
+        ChooseIteamInNV();
 
     }
 
@@ -57,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_settings:
+            case R.id.mainActivityMenuSettings:
                 openSettings();
                 break;
         }
@@ -89,10 +101,37 @@ public class MainActivity extends AppCompatActivity {
                                                                  drawerLayout.closeDrawer(GravityCompat.START);
 
                                                                  return false;
+
+
+
                                                              }
                                                          }
 
         );
+
+    }
+    private void ChooseIteamInNV(){
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.phone:
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel: " + PHONE_NUMBER));
+                        startActivity(intent);
+                        break;
+                    case R.id.mail:
+                        Intent intent2 = new Intent(Intent.ACTION_SENDTO);
+                        intent2.setData(Uri.parse(TAG_MAIL_TO));
+                        intent2.putExtra(Intent.EXTRA_EMAIL, new String[]{TAG_EMAIL});
+                        intent2.putExtra(Intent.EXTRA_SUBJECT, TAG_SUBJECT);
+                        startActivity(intent2);
+                        break;
+
+                }
+                return false;
+            }
+        });
     }
 
 
